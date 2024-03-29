@@ -12,7 +12,7 @@
             if (nums[(int)right] == maxNum) {
                 count++;
             }
-            // If count is greater than or equal to k, calculate subarrays count
+          
             while (count >= k) {
                 if (nums[(int)left] == maxNum) {
                     count--;
