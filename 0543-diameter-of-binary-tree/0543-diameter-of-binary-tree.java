@@ -13,18 +13,30 @@
  *     }
  * }
  */
- class Solution {
-    public int diameterOfBinaryTree(TreeNode root) {
-        findDia(root);
-        return maxDia;
+class ReturnDiam{
+    int diameter;
+    int height;
+}
+
+class Solution {
+    public ReturnDiam dia(TreeNode root)
+    {
+        if(root==null)
+        {
+            ReturnDiam d=new ReturnDiam();
+            d.diameter=0;
+            d.height=0;
+            return d;
+        }
+        ReturnDiam leftans=dia(root.left);
+        ReturnDiam rightans=dia(root.right);
+        ReturnDiam ans=new ReturnDiam();
+        ans.diameter=Math.max(leftans.diameter,Math.max(rightans.diameter,leftans.height
+                                                       +rightans.height));
+        ans.height=1+Math.max(leftans.height,rightans.height);
+        return ans;
     }
-    private int maxDia = 0;
-    private int findDia(TreeNode root){
-        if(root == null)return 0;
-        int leftDepth = findDia(root.left);
-        int rightDepth = findDia(root.right);
-        int currDia = leftDepth + rightDepth;
-        maxDia = Math.max(maxDia, currDia);
-        return 1 + Math.max(leftDepth, rightDepth);
+    public int diameterOfBinaryTree(TreeNode root) {
+        return dia(root).diameter;
     }
 }
