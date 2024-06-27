@@ -1,17 +1,17 @@
 class Solution {
     public int findCenter(int[][] edges) {
-        int first=edges[0][0];
-        int second=edges[0][1];
-        if(first==edges[1][0])
+        // int first=edges[0][0];
+        // int second=edges[0][1];
+        if(edges[0][0]==edges[1][0])
         {
-            return first;
+            return edges[0][0];
         }
-        else if(first==edges[1][1])
+        else if(edges[0][0]==edges[1][1])
         {
-            return first;
+            return edges[0][0];
         }
         else{
-            return second;
+            return edges[0][1];
         }
     }
 }
